@@ -1,0 +1,77 @@
+11
+Maria da Silva
+Brasil
+22
+Jose da Silva
+Brasil
+33
+Mario de Souza
+Brasil
+22
+Joseph Smith
+EUA
+44
+Madeleine Dubois
+Franca
+55
+Jean Philippe
+Franca
+66
+John Doe
+EUA
+77
+Mary Smith
+EUA
+-1
+111
+1
+true
+Salto em altura
+222
+2
+true
+Salto em altura
+333
+3
+true
+Salto em altura
+222
+1
+true
+Basquetebol
+444
+1
+false
+Futebol de campo
+555
+2
+false
+Futebol de campo
+666
+3
+false
+Futebol de campo
+-1
+111
+11
+222
+22
+333
+55
+777
+11
+444
+22
+444
+33
+555
+66
+666
+99
+-1
+88
+Joseph Smith
+777
+Argentina
+9
+Basquetebol

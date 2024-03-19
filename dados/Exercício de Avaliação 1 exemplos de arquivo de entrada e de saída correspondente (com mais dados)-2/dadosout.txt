@@ -1,0 +1,35 @@
+1:11,Maria da Silva,Brasil
+1:22,Jose da Silva,Brasil
+1:33,Mario de Souza,Brasil
+1:44,Madeleine Dubois,Franca
+1:55,Jean Philippe,Franca
+1:66,John Doe,EUA
+1:77,Mary Smith,EUA
+2:111,1,true,Salto em altura
+2:222,2,true,Salto em altura
+2:333,3,true,Salto em altura
+2:444,1,false,Futebol de campo
+2:555,2,false,Futebol de campo
+2:666,3,false,Futebol de campo
+3:111,11
+3:222,22
+3:333,55
+3:444,22
+3:444,33
+3:555,66
+4:55,Jean Philippe,Franca
+5:11,Maria da Silva,Brasil
+6:333,3,true,Salto em altura
+7:44,Madeleine Dubois,Franca
+7:55,Jean Philippe,Franca
+8:11,Maria da Silva,Brasil
+8:22,Jose da Silva,Brasil
+8:33,Mario de Souza,Brasil
+9:Futebol de campo,1,22,Jose da Silva,Brasil
+9:Futebol de campo,1,33,Mario de Souza,Brasil
+9:Futebol de campo,2,66,John Doe,EUA
+9:Futebol de campo,3,Sem atletas com medalha.
+10:22,Jose da Silva,Brasil,Ouro:1,Prata:1,Bronze:0
+11:Brasil,Ouro:2,Prata:1,Bronze:0
+11:Franca,Ouro:0,Prata:0,Bronze:1
+11:EUA,Ouro:0,Prata:1,Bronze:0
