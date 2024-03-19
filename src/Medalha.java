@@ -2,7 +2,7 @@ public class Medalha {
 
 	private int codigo;
 
-	private int tipo;
+	private int tipo;d
 
 	private boolean individual;
 
