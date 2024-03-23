@@ -8,7 +8,7 @@ public class Atleta {
 
 	private String pais;
 
-	private ArrayList<Medalha> medalhas = null;
+	private ArrayList<Medalha> medalhas;
      public Atleta(int numero, String nome, String pais) {
 		this.numero = numero;
 		this.nome = nome;
@@ -23,4 +23,11 @@ public class Atleta {
 		return tamanho;
 	}
 
+	public String getNome() {
+		return nome;
+	}
+
+	public int getNumero(){
+		 return numero;
+	}
 }
