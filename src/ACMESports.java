@@ -27,6 +27,7 @@ public class ACMESports {
 	public void executar() {
 		cadastraAtletas();
 		cadastraMedalhas();
+	    distribuirMedalhas();
 	}
 
     private void cadastraAtletas(){
@@ -64,6 +65,22 @@ public class ACMESports {
 			medalheiro.cadastraMedalha(medalha);
 			System.out.println("2:"+ codigo + "," + tipo + "," + individual + "," + modalidade);
 
+			codigo = entrada.nextInt();
+			entrada.nextLine();
+		}
+	}
+
+	public void distribuirMedalhas() {
+		int codigo;
+		int numero;
+		codigo = entrada.nextInt();
+		while(codigo != -1){
+			numero = entrada.nextInt();
+			Medalha medalha = medalheiro.consultaMedalha(codigo);
+			Atleta atleta = plantel.consultaAtleta(numero);
+			medalha.adicionaAtleta(atleta);
+			atleta.adicionaMedalha(medalha);
+			System.out.println("3:" + codigo + "," + numero);
 			codigo = entrada.nextInt();
 			entrada.nextLine();
 		}

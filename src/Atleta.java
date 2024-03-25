@@ -13,6 +13,7 @@ public class Atleta {
 		this.numero = numero;
 		this.nome = nome;
 		this.pais = pais;
+		medalhas = new ArrayList<>();
 	}
 	public void adicionaMedalha(Medalha medalha) {
       medalhas.add(medalha);
