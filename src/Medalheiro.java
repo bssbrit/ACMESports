@@ -2,8 +2,10 @@ import java.util.ArrayList;
 
 public class Medalheiro {
 
-	private ArrayList<Medalha> medalheiro = null;
-
+	private ArrayList<Medalha> medalheiro;
+    public Medalheiro() {
+		this.medalheiro = new ArrayList<Medalha>();
+	}
 	public boolean cadastraMedalha(Medalha m) {
 		if(consultaMedalha(m.getCodigo()) == null){
 			medalheiro.add(m);
@@ -13,7 +15,7 @@ public class Medalheiro {
 	}
 
 	public Medalha consultaMedalha(int codigo) {
-		if(this.medalheiro.isEmpty()){
+		if(medalheiro.isEmpty()){
 			return null;
 		}
 		Medalha medalhaAchada;
