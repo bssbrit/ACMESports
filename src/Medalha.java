@@ -26,5 +26,10 @@ public class Medalha {
 	public String getModalidade(){
 		return this.modalidade;
 	}
-
+    public boolean getIndividual() {
+		return this.individual;
+	}
+	public int getTipo(){
+		return this.tipo;
+	}
 }

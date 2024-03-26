@@ -31,4 +31,7 @@ public class Atleta {
 	public int getNumero(){
 		 return numero;
 	}
+    public String getPais(){
+		 return pais;
+	}
 }
