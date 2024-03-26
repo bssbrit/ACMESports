@@ -34,4 +34,5 @@ public class Atleta {
     public String getPais(){
 		 return pais;
 	}
+
 }
