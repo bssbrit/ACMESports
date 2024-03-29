@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.PrintStream;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -30,6 +31,7 @@ public class ACMESports {
 	    distribuirMedalhas();
 		mostrarAtletas();
 		mostrarMedalha();
+		comissaoPais();
 	}
 
     private void cadastraAtletas(){
@@ -97,18 +99,14 @@ public class ACMESports {
 		}
 	}
 
-	/*
-	* Mostrar os dados de um determinado atleta por número: lê o número de um
-determinado atleta. Se não existir um atleta com o número indicado, mostra a
-mensagem de erro: “4:Nenhum atleta encontrado.”. Se existir, mostra os
-dados do atleta no formato: 4:número,nome,país
-* */private void mostrarAtletas() {
+
+private void mostrarAtletas() {
 	int numero;
 	String nome;
 	numero = entrada.nextInt();
     Atleta atleta = plantel.consultaAtleta(numero);
     if(atleta == null) {
-		System.out.println("4:Nenhum atleta encontrado");
+		System.out.println("4:Nenhum atleta encontrado.");
 	} else{
 		System.out.println("4:" + atleta.getNumero() +"," +atleta.getNome() + "," + atleta.getPais());
 	}
@@ -116,28 +114,39 @@ dados do atleta no formato: 4:número,nome,país
     nome = entrada.nextLine();
 	atleta = plantel.consultaAtleta(nome);
 	if(atleta == null){
-		System.out.println("5:Nenhum atleta encontrado");
+		System.out.println("5:Nenhum atleta encontrado.");
 	}else{
 		System.out.println("5:" + atleta.getNumero() +"," +atleta.getNome() + "," + atleta.getPais());
 	}
 	}
-/*
-* Mostrar os dados de uma determinada medalha: lê um código de medalha. Se
-não existir uma medalha com o código indicado, mostra a mensagem de erro:
-“6:Nenhuma medalha encontrada.”. Se existir, mostra os dados da medalha
-no formato: 6:codigo,tipo,é individual?,modalidade
 
+/*
 * 7. Mostrar os dados dos atletas de um determinado país: lê o nome de um país.
 Se não existir nenhum país com o nome indicado, mostra a mensagem de erro:
 “7:Pais nao encontrado.”. Se existir, mostra os dados de cada atleta no
 formato: 7:número,nome,país*/
-
+	private void comissaoPais(){
+		String pais;
+		pais = entrada.nextLine();
+		ArrayList<Atleta> comissao =  plantel.comissaoAtletica(pais);
+		if(comissao.isEmpty()){
+			System.out.println("7:Pais nao encontrado.");
+		} else{
+			for(Atleta atleta : comissao) {
+				System.out.println("7:" + atleta.getNumero() + ","+atleta.getNome()+","+atleta.getPais());
+			}
+		}
+	}
+/** Mostrar os dados de uma determinada medalha: lê um código de medalha. Se
+ não existir uma medalha com o código indicado, mostra a mensagem de erro:
+ “6:Nenhuma medalha encontrada.”. Se existir, mostra os dados da medalha
+ no formato: 6:codigo,tipo,é individual?,modalidade*/
 	private void mostrarMedalha() {
 		int codigo;
 		codigo = entrada.nextInt();
 		Medalha medalha = medalheiro.consultaMedalha(codigo);
 	    if(medalha == null){
-			System.out.println("6:Nenhuma medalha encontrada");
+			System.out.println("6:Nenhuma medalha encontrada.");
 		}else {
 			System.out.println("6:" + medalha.getCodigo() +"," +medalha.getTipo() + "," + medalha.getIndividual() + "," + medalha.getModalidade());
 		}

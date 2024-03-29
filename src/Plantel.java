@@ -26,6 +26,7 @@ public class Plantel {
 				//Ainda to em dúvida como farei isso, mas por enquanto vou só dar o commit/push
 			}
 		}
+		return comissao;
 	}
 	public Atleta consultaAtleta(String nome) {
 		if(this.atletas.isEmpty()){
