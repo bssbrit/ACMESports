@@ -6,6 +6,9 @@ public class Plantel {
     public Plantel(){
 		this.atletas = new ArrayList<Atleta>();
 	}
+	public ArrayList<Atleta> getAtletas(){
+		return this.atletas;
+	}
 	public boolean cadastraAtleta(Atleta atleta) {
 		if(consultaAtleta(atleta.getNumero()) == null){
 			atletas.add(atleta);

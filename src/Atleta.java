@@ -19,10 +19,21 @@ public class Atleta {
       medalhas.add(medalha);
 	}
 
-	public int consultaQuantidadeMedalhas() {
-		 int tamanho = medalhas.size();
-		return tamanho;
+	public ArrayList<Medalha> getMedalhas(){
+		 return this.medalhas;
 	}
+
+	public boolean buscarTipoMedalha(int tipo){
+		 boolean confirm = false;
+		 for(Medalha medalha : medalhas) {
+			 if(medalha.getTipo() == tipo) {
+				 confirm = true;
+				 return confirm;
+			 }
+		 }
+		 return confirm;
+	}
+
 
 	public String getNome() {
 		return nome;

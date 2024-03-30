@@ -6,6 +6,7 @@ public class Medalheiro {
     public Medalheiro() {
 		this.medalheiro = new ArrayList<Medalha>();
 	}
+
 	public boolean cadastraMedalha(Medalha m) {
 		if(consultaMedalha(m.getCodigo()) == null){
 			medalheiro.add(m);
@@ -29,7 +30,7 @@ public class Medalheiro {
 	}
 
 	public ArrayList<Medalha> consultaMedalhas(String modalidade) {
-		ArrayList<Medalha> subMedalhas = null;
+		ArrayList<Medalha> subMedalhas = new ArrayList<>();
 		for(Medalha medalha : medalheiro){
 			if(medalha.getModalidade().equals(modalidade)){
 				subMedalhas.add(medalha);

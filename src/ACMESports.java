@@ -31,7 +31,10 @@ public class ACMESports {
 	    distribuirMedalhas();
 		mostrarAtletas();
 		mostrarMedalha();
-		comissaoPais();
+		comissaoPais();//etapa 7
+		atletasDaMedalha();//etapa 8
+		atletasModalidade();
+		quemTemMais();
 	}
 
     private void cadastraAtletas(){
@@ -119,6 +122,46 @@ private void mostrarAtletas() {
 		System.out.println("5:" + atleta.getNumero() +"," +atleta.getNome() + "," + atleta.getPais());
 	}
 	}
+   private void atletasModalidade() {
+	   boolean confirm = false;
+	   String modalidade;
+	   modalidade = entrada.nextLine();
+	   ArrayList<Medalha> medalhas = medalheiro.consultaMedalhas(modalidade);
+	   if (medalhas == null || medalhas.isEmpty() ) {
+		   System.out.println("9:Modalidade não encontrada");
+	   } else {
+		   for (Medalha medalha : medalhas) {
+			   if (medalha.getAtleta().isEmpty()) {
+				   System.out.println("9:" + medalha.getModalidade() + "," + medalha.getTipo() + ",Sem atletas com medalha.");
+			   }else{
+			   for(Atleta atleta: medalha.getAtleta()) {
+				   System.out.println("9:" + medalha.getModalidade() + "," + medalha.getTipo() + "," + atleta.getNumero() + "," + atleta.getNome() + "," + atleta.getPais());
+			   }
+			   }
+		   }
+	   }
+   }
+	/*
+	Mostrar os dados atletas de um determinado tipo de medalha: lê o tipo de uma
+medalha. Se não houver nenhum atleta com o tipo de medalha indicado, mostra a
+mensagem de erro: “8:Nenhum atleta encontrado.”, caso contrário, mostra
+os dados de cada atleta no formato: 8:número,nome,país
+	*/
+	private void atletasDaMedalha(){
+		boolean confirm = false;
+		int tipo;
+		tipo = entrada.nextInt();
+		entrada.nextLine();
+		for(Atleta atleta : plantel.getAtletas()){
+			if(atleta.buscarTipoMedalha(tipo)){
+				System.out.println("8:"+atleta.getNumero()+","+ atleta.getNome()+","+atleta.getPais());
+				confirm = true;
+			}
+		}
+		if(!confirm) {
+			System.out.println("8:Nenhum atleta encontrado.");
+		}
+	}
 
 /*
 * 7. Mostrar os dados dos atletas de um determinado país: lê o nome de um país.
@@ -151,6 +194,49 @@ formato: 7:número,nome,país*/
 			System.out.println("6:" + medalha.getCodigo() +"," +medalha.getTipo() + "," + medalha.getIndividual() + "," + medalha.getModalidade());
 		}
 		entrada.nextLine();
+	}
+
+	/*
+	* .Mostrar os dados do atleta com mais medalhas: localiza o atleta com maior
+número de medalhas. Se não houver atletas com medalhas, mostra a mensagem
+de erro: “10:Nenhum atleta com medalha.”. Caso contrário, mostra os dados
+do atleta e medalhas no formato:
+10:número,nome,país,Ouro:quantidade,Prata:quantidade,Bronze:
+quantidade
+* */
+    private void quemTemMais(){
+
+		Atleta maiorMedalhista = null;
+		int contagem = 0;
+		int ouro = 0;
+		int prata = 0;
+		int bronze = 0;
+		for(Atleta atleta : plantel.getAtletas()){
+				  if(atleta.getMedalhas().size() > contagem){
+					  ouro = 0;
+					  prata = 0;
+					  bronze = 0;
+					  maiorMedalhista = atleta;
+					  contagem = atleta.getMedalhas().size();
+					  for(Medalha medalha : atleta.getMedalhas()){
+						  if(medalha.getTipo() == 1){
+							  ouro++;
+						  }
+						  if(medalha.getTipo() == 2){
+							  prata++;
+						  }
+						  if(medalha.getTipo() == 3){
+							  bronze++;
+						  }
+					  }
+				  }
+			}
+		if(contagem == 0) {
+			System.out.println("10:Nenhum atleta com medalha.");
+		} else{
+			System.out.println("10:"+ maiorMedalhista.getNumero() + "," + maiorMedalhista.getNome() + "," + maiorMedalhista.getPais() + ",Ouro:" + ouro + ",Prata:" + prata + ",Bronze:" + bronze);
+		}
+
 	}
 	private void redirecionaES() {
 		try {
