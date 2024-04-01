@@ -17,6 +17,8 @@ public class Plantel {
 		return false;
 
 	}
+
+
 	/** 7. Mostrar os dados dos atletas de um determinado país: lê o nome de um país.
 	Se não existir nenhum país com o nome indicado, mostra a mensagem de erro:
 			“7:Pais nao encontrado.”. Se existir, mostra os dados de cada atleta no
@@ -26,7 +28,7 @@ public class Plantel {
 		for(Atleta atleta : atletas){
 			if(atleta.getPais().equals(pais)){
 				comissao.add(atleta);
-				//Ainda to em dúvida como farei isso, mas por enquanto vou só dar o commit/push
+
 			}
 		}
 		return comissao;

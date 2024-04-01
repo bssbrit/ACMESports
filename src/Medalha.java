@@ -10,7 +10,6 @@ public class Medalha {
 
 	private String modalidade;
 
-	//private Atleta atleta;
 	private ArrayList<Atleta> atletas;
 
 	public Medalha(int codigo,int  tipo,boolean individual,String modalidade) {
