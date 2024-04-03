@@ -263,37 +263,88 @@ quantidade de cada tipo de medalha).
 			paises.add(pais);
 			}
 		}
+		ArrayList<Medalha> medalhasVerificadas = new ArrayList<>() ;
 		for(String pais : paises){
 			ouro = 0;
 			prata = 0;
 			bronze = 0;
 			count = 0;
 			for(Atleta atleta : plantel.comissaoAtletica(pais)) {
-				if(!atleta.getMedalhas().isEmpty()) {
+				if(!atleta.getMedalhas().isEmpty() ) {
 					for(Medalha medalha : atleta.getMedalhas()){
-						if(medalha.getTipo() == 1){
-							ouro = ouro + 1;
-						}
-						if(medalha.getTipo() == 2){
-							prata++;
-						}
-						if(medalha.getTipo() == 3){
-							bronze++;
-						}
+		               if(!medalhasVerificadas.contains(medalha)) {
+						   switch (medalha.getTipo()) {
+							   case (1):
+								   ouro++;
+								   count++;
+								   break;
+
+							   case (2):
+								   prata = prata + 1;
+								   count++;
+								   break;
+
+							   case (3):
+								   bronze++;
+								   count++;
+								   break;
+
+						   }
+						   medalhasVerificadas.add(medalha);
+					   }
 					}
 				}
 
 			}
-            //PROFESSOR	esse if eu coloquei para o resultado do arquivo de saída ficar igual ao do senhor, porém, eu acho
-			//que o seu resultado esta com lógica falha, já que está apenas dando 2 medalhas de ouro para o Brasil, sendo
-			// que tem na real 3 medalhas como pode ser visto no na parte do exercício 3 do teu arquivo de saida exemplo
-			// (RETIRADA DO TEU ARQUIVO RESPECTIVAMENTE DAS LINHAS 14,17 E 18)3:111,11     3:444,22   3:444,33
-			if(pais.equals("Brasil") && ouro > 2)ouro--;
-
-			System.out.println("11:"+pais+",Ouro:"+ ouro+",Prata:"+ prata+",Bronze:"+ bronze);
+			System.out.println("11.1:"+pais+",Ouro:"+ ouro+",Prata:"+ prata+",Bronze:"+ bronze);
 		}
+        QuadroGeralCompleto(paises);
 	}
 
+	public void QuadroGeralCompleto(ArrayList<String> paises) {
+		ArrayList<Medalha> medalhasVerificadas;
+		int ouro,prata,bronze;
+		for (String pais : paises) {
+			medalhasVerificadas = new ArrayList<>();
+			for (Atleta atleta : plantel.comissaoAtletica(pais)) {
+				if (!atleta.getMedalhas().isEmpty()) {
+					for (Medalha medalha : atleta.getMedalhas()) {
+						if (!medalhasVerificadas.contains(medalha)) {
+							medalhasVerificadas.add(medalha);
+						}
+					}
+				}
+			}
+			System.out.println("11.2:"+pais+","+medalhasVerificadas.size() + ",atletas:" );
+
+			for(Atleta atleta : plantel.comissaoAtletica(pais)) {
+				ouro = 0;
+				prata = 0;
+				bronze = 0;
+				if (!atleta.getMedalhas().isEmpty()) {
+					for (Medalha medalha : atleta.getMedalhas()) {
+						switch (medalha.getTipo()) {
+							case (1):
+								ouro++;
+								break;
+
+							case (2):
+								prata = prata + 1;
+								break;
+
+							case (3):
+								bronze++;
+								break;
+
+						}
+
+					}
+				}
+				System.out.println("---"+atleta.getNome()+ ",Ouro:"+ouro+",Prata:"+prata+",Bronze:"+bronze);
+                medalhasVerificadas = null;
+			}
+			}
+	}
 	private void redirecionaES() {
 		try {
 			BufferedReader streamEntrada = new BufferedReader(new FileReader(nomeArquivoEntrada));
